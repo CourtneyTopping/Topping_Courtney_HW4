@@ -1,40 +1,28 @@
-(() => {
-  consoe.log('video stuff loaded!')
-//variables come first!
-//grab the video
-const vidPlayer = document.querySelector('video'),
-      pauseButton = document.querySelectorAll('button')[0],
-      playButton = document.querySelectorAll('button')[1],
-      rewindButton = document.querySelectorAll('button')[2];
+(() =>{
+  console.log('video stuff loaded');
+  //variables come first
+  let sigils = document.querySelectorAll('.sigilContainer'),
+      lightbox = document.querySelector('.lightbox'),
+      closeLightBoxButton = lightbox.querySelector('.close-lightbox');
 
-//functions go in the middle
-function volOn() {
-  vidPlayer.muted = false;
+//Functions in the middle
+function showHouseVideo() {
+  //debugger;
+  lightbox.classList.add('show-lightbox');
+  //make it play -->take autoplay off in index.html
 }
 
-function volOff() {
-  vidPlayer.muted = true;
+function closeLightbox() {
+  //debugger;
+  lightbox.classList.remove('show-lightbox');
+  //next stop video and rewind to 0
+
 }
 
-function playVideo() {
-  //make the video play!
-  vidPlayer.play();
-}
+//Event Handling at the bottom
+sigils.forEach(sigil => sigil.addEventListener('click', showHouseVideo));
+closeLightBoxButton.addEventListener('click', closeLightbox);
 
-function pauseVideo() {
-  //make the video play!
-  vidPlayer.pause();
-}
-
-function rewindVideo() {
-  //make the video play!
-  vidPlayer.currentTime = 0;
-  //vidPlayer.currentTime -= 5; <-- this will make it jump back 5 seconds in the timeline
-}
-// before the dot is thing youre working with.after the dot is what youre asking it to do
-      vidPlayer.addEventListener('mouseover', volOn);
-      vidPlayer.addEventListener('mouseout', volOff);
-      playButton.addEventListener('click', playVideo);
-      pauseButton.addEventListener('click', pauseVideo);
-      rewindButton.addEventListener('click', rewindVideo);
 })();
+
+//So, add event listener first, then set up the function for each term.
