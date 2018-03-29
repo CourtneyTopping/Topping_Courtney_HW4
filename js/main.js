@@ -11,20 +11,35 @@
       lightbox = document.querySelector('.lightbox'),
       closeLightBoxButton = lightbox.querySelector('.close-lightbox'),
       vidPlayer = document.querySelector('video'),
-      vidControls = document.querySelector('.controls');
+      vidControls = document.querySelector('.controls'),
+      imageBanner = document.querySelector('#houseImages');
 
 //Functions in the middle
+function scrollBanners(offset) {
+  //move banner images to the left
+  let moveIt = offset * 600 +"px";
+
+  imageBanner.style.right = moveIt;
+
+}
+
 function showHouseVideo() {
   let houseName = this.className.split(' ')[1].capIt();
 //split apart the class name on the element, grab the house from the result
   document.querySelector('h1').textContent = `House ${houseName}`;
   //debugger;
+  //*can turn line below off to see scrollBanners in action
   lightbox.classList.add('show-lightbox');
   //make it play -->(take autoplay off in index.html)
   vidPlayer.src = `video/House-${houseName}.${vidPlayer.currentSrc.split('.')[1]}`;
   vidPlayer.load();
   vidPlayer.play();
+
+  scrollBanners(this.dataset.offset)
 }
+
+
+//
 
 function closeLightbox() {
   //debugger;
