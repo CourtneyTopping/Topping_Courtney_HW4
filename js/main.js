@@ -12,16 +12,22 @@
       closeLightBoxButton = lightbox.querySelector('.close-lightbox'),
       vidPlayer = document.querySelector('video'),
       vidControls = document.querySelector('.controls'),
-      imageBanner = document.querySelector('#houseImages');
+      imageBanner = document.querySelector('#houseImages'),
+	  descrptions = document.querySelectorAll('.house-info');
 
 //Functions in the middle
 function scrollBanners(offset) {
   //move banner images to the left
   let moveIt = offset * 600 +"px";
 
-  imageBanner.style.right = moveIt;
-
+  imageBanner.style.right = moveIt;	
+	
+	
+	 
+	document.querySelector(`.house${descriptions}`).classList.add('.show-house');
+	
 }
+	
 
 function showHouseVideo() {
   let houseName = this.className.split(' ')[1].capIt();
@@ -35,7 +41,7 @@ function showHouseVideo() {
   vidPlayer.load();
   vidPlayer.play();
 
-  scrollBanners(this.dataset.offset)
+  scrollBanners(this.dataset.offset);
 }
 
 
@@ -69,6 +75,7 @@ sigils.forEach(sigil => sigil.addEventListener('click', showHouseVideo));
 closeLightBoxButton.addEventListener('click', closeLightbox);
 vidPlayer.addEventListener('ended', closeLightbox);
 vidControls.addEventListener('click', pausePlay);
+
 
 })();
 
